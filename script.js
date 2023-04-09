@@ -1,58 +1,92 @@
-const comSel = (round,flag,value)=>{
-    let rand=Math.floor(Math.random()*3+1);
-    if(round===1){
-        if(rand==1){
-            value="Snake";
-        }
-        else if(rand==2){
-            value="Water";
-        }
-        else{value="Gun"}
+let playerSelection=[];
+function Game(){
+    const name=window.prompt("Enter your name:");
+    let random=Math.floor(((Math.random())*(3))+1);
+    let firstChoice;
+      if(random ===1){
+         firstChoice='Snake';
+      }
+      else if(random ===2){
+          firstChoice='Water';
+      }
+      else if(random ===3){
+          firstChoice='Gun';
+      }
+      else console.log('error');
+  for(let i=0;i<5;i++){
+      playerSelection[i] = window.prompt(`Enter your choice ${name}:`);
+      if(i===0){      
+          playRound(playerSelection[i],firstChoice);
+      }
+      else{
+        let comSelection=computerChoice(playerSelection[i-1]);
+        playRound(playerSelection[i],comSelection);
+      }
+     
+  }
+  }
+
+  
+function playRound(playerSelection,comSelection){
+    if(playerSelection===comSelection){
+        console.log("It is a draw")
     }
     else{
-        let prevUserSel=userSel[round-1];
-        switch(prevUserSel){
-            case "Snake": 
-            if(rand%2==0){
-                value="Gun";
-                flag=true
-            }
-            else value="Snake";
-            case "Water":
-                if(rand%2==0){
-                    value="Snake";
-                    flag=true
-                }
-                else value="Water";
-            case "Gun":
-                if(rand%2==0){
-                    value="Water";
-                    flag=true
-                }
-                else value="Gun";
+        if(playerSelection==='Snake' && comSelection==='Water'){
+            console.log(`Victory!.you chose ...${playerSelection} and the computer chose ...${comSelection}`)
         }
-    }
-    console.log(comSel);
-    return comSel;
-}
-const userSel={};
-
-const Game= (Uscore,Cscore) =>{
-    let numRound = 5;
-    for(let i=1;i<=numRound;i++){
-        comSel['round']=i;
-        userSel[i]=window.prompt("Enter your champion!:");
-        if(comSel['value']===userSel[i]){
-            console.log("DRAW");
-            return (Uscore,Cscore)+1;
+        else if(playerSelection ==='Water' && comSelection==='Gun'){
+            console.log(`Victory!.you chose ...${playerSelection} and the computer chose ...${comSelection}`)
+        }
+        else if(playerSelection ==='Gun' && comSelection==='Snake'){
+            console.log(`Victory!.you chose ...${playerSelection} and the computer chose ...${comSelection}`)
         }
         else{
-            if(comSel['flag']==true){
-                return Cscore+1
-            }
-            else return Uscore+1;
+            console.log(`Loss!.you chose ...${playerSelection} and the computer chose ...${comSelection}`)
         }
-    }
-    if(Cscore>Uscore) console.log('You lose');
-    else if(Cscore<Uscore) console.log('You win');
+        /*
+        switch(playerSelection,comSelection){
+             case 'Snake','Water':
+                 console.log("You win1");
+             case  'Water','Gun':
+                 console.log("You win2");
+             case  'Gun','Snake':
+                 console.log("you win3");
+             default: console.log("you lose");        
+
+        }
+    }*/
 }
+}
+
+function computerChoice(playerSelection){
+    if(playerSelection=='Snake' || playerSelection==='snake'){
+        let random=Math.floor(Math.random()*10);
+         if(random%2==0){
+             return 'Gun'
+         }
+         else{return 'Snake'}
+    }
+    else if(playerSelection=='Water' || playerSelection==='water'){
+        let random=Math.floor(Math.random()*10);
+        if(random%2==0){
+            return 'Snake'
+        }
+        else{return 'Water'}
+    }
+    else if(playerSelection =='Gun' || playerSelection === 'gun'){
+        let random=Math.floor(Math.random()*10);
+        if(random%2==0){
+            return 'Water'
+        }
+        else{return 'Gun'}
+    }
+    else{
+        throw 'INVALID';
+        console.log('invalid input. Enter either Snake, Water or Gun');
+        
+    }
+    
+}
+
+
