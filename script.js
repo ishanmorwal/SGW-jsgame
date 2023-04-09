@@ -44,18 +44,6 @@ function playRound(playerSelection,comSelection){
         else{
             console.log(`Loss!.you chose ...${playerSelection} and the computer chose ...${comSelection}`)
         }
-        /*
-        switch(playerSelection,comSelection){
-             case 'Snake','Water':
-                 console.log("You win1");
-             case  'Water','Gun':
-                 console.log("You win2");
-             case  'Gun','Snake':
-                 console.log("you win3");
-             default: console.log("you lose");        
-
-        }
-    }*/
 }
 }
 
