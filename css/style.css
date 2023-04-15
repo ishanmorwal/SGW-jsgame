@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@600&family=Dancing+Script&family=Koulen&family=Oswald&family=Poppins&family=Rajdhani:wght@300&family=Rubik+Dirt&family=Silkscreen&family=Sofia+Sans+Condensed:wght@600&family=Source+Code+Pro:wght@500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.container{
+    height:100vh;
+    width:100vw;
+    background:linear-gradient(180deg,#a2a2ff,#89ff89,#1e1e1e);
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+}
+
+/*@media (max-width: 800px){
+    .container{
+        flex-direction:column;
+        height:100vh;
+        width:100vw;
+    }
+    .header{
+        font-size:23%;
+    }
+}*/
+
+@keyframes colorify{
+    0%{
+        filter:hue-rotate(45deg);
+    }
+    25%{
+        filter:hue-rotate(60deg);
+    }
+    50%{
+        filter:hue-rotate(90deg);
+    }
+    75%{
+        filter:hue-rotate(60deg);
+    }
+    100%{
+        filter:hue-rotate(45deg);
+    }
+}
+#header{
+    font-size:10rem;
+    font-family:'Sofia Sans Condensed',Verdana, Geneva, Tahoma, sans-serif;
+    font-style:oblique;
+    color:#0f0f0f;
+    background:#a2a2ff;
+    height:100vh;
+    text-align:center;
+    vertical-align:middle;
+    line-height:100vh;
+}
+
+.Gameblock{
+    background:#0f0f0f;
+    height:50%;
+    width:25%;
+    padding:5%;    
+    border-radius:10%;
+    color:white;
+    text-align:center;
+    font-size:2rem; 
+}
+
+.icon{
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    flex-direction:column;  
+    font-size:5rem;
+    text-align:center;
+}
+
+span:hover{
+    animation:colorify 1s linear infinite;
+}

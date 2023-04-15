@@ -1,6 +1,5 @@
 let playerSelection=[];
 function Game(){
-    const name=window.prompt("Enter your name:");
     let random=Math.floor(((Math.random())*(3))+1);
     let firstChoice;
       if(random ===1){
@@ -13,20 +12,40 @@ function Game(){
           firstChoice='Gun';
       }
       else console.log('error');
-  for(let i=0;i<5;i++){
-      playerSelection[i] = window.prompt(`Enter your choice ${name}:`);
-      if(i===0){      
-          playRound(playerSelection[i],firstChoice);
+      try{
+        for(let i=0;i<5;i++){
+            playerSelection[i] = getPlayerSelection();
+            if(i===0){      
+                playRound(playerSelection[i],firstChoice);
+            }
+            else{
+              let comSelection=computerChoice(playerSelection[i-1]);
+              playRound(playerSelection[i],comSelection);
+            }
+           
+        }
       }
-      else{
-        let comSelection=computerChoice(playerSelection[i-1]);
-        playRound(playerSelection[i],comSelection);
+      catch(e){
+          console.log(e);
       }
-     
-  }
+
   }
 
-  
+  function getPlayerSelection(){
+    const choice=document.querySelector('icon');
+    choice.children.namedItem('Snek').addEventListener('click',()=>{
+        console.log("Snake bit")
+        return 'Snake';
+    });
+    choice.children.namedItem('water').addEventListener('click',()=>{
+        console.log("Water splashed");
+        return 'Water';
+    });
+    choice.children.namedItem('gun').addEventListener('click',()=>{
+        console.log("Gun Shot");
+        return 'Gun';
+    })
+}
 function playRound(playerSelection,comSelection){
     if(playerSelection===comSelection){
         console.log("It is a draw")
@@ -69,12 +88,8 @@ function computerChoice(playerSelection){
         }
         else{return 'Gun'}
     }
-    else{
-        throw 'INVALID';
-        console.log('invalid input. Enter either Snake, Water or Gun');
-        
-    }
     
 }
 
 
+let something=getPlayerSelection();
