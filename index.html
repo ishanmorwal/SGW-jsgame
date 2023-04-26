@@ -9,14 +9,33 @@
     <link rel='stylesheet' href='css/style.css'>
     <title> SnakeWaterGun -when RoShamBo met the jungle</title>
 </head>
-<body>
-    <h1 id="header">Snake, Water and Gun</h1>
-    <div class="container">  
-        <div class="Gameblock">Your Choice<div class="icon">   <span id='Snek'>&#128013</span> <span id='water'>&#127754</span> <span id='gun'>&#128299</span>
-        </div></div>
-        <div class="Gameblock">The Jungle's<div class=""></div></div>
+<body onload=getPlayerSelection()>
+    <div id='modal' class="modal">
+        <h1>Since time immemorial...</h1>
+        <p>There has been a continual war being fought. Intellect vs Instinct , Knowledge vs Wisdom , Man vs the Wild. The Jungle is no stranger to these wars. The best of men toil away in the jungle, for resources and more with their trusty weapon, the gun. But the gun is no match for the very Nature. The water rusts away the parts, leaving man defenseless. Although, the water too, is scaled by the slither of the snake. As all men before you did, it is now your turn. But beware, the jungle is much scarier in the night. You will remain in the jungle until your score is 5.</p>
+        <button id='begin' onclick=anim()>Continue at your own Risk.</button>
     </div>
-    --<button onclick=Game()>Click to play</button> &#128013 &#127754 &#128299-->
-    <!--<button onclick=getPlayerSelection()>Click</button> -->
+    <h1 class="hidden" id="header">Snake, Water and Gun</h1> 
+    <div id="contain" class="container hidden">  
+        <div class="Gameblock"><p id="score"></p>Your Choice <div id="GameIcon">   <span id='snek'>&#128013</span> <span  id='water'>&#127754</span> <span  id='gun'>&#128299</span>
+        </div></div>
+        <div class="Gameblock">The Jungle's<div class="ComIcon"><span class='hidden' id='snekCom'>&#128013</span> <span class='hidden' id='waterCom'>&#127754</span> <span class='hidden' id='gunCom'>&#128299</span></div></div>    
+    </div>
+    <div class="Win hidden">
+        <h1>YOU WIN!</h1>
+        <p>Your skills paid off, you have survived. But will you dare venture again?</p>
+        <button class='btn' id='yes' onclick=replay()>Yes , i shall</button>
+        <button class='btn' id='no' onclick=quit()>No</button>
+    </div>
+    <div class="Loss hidden">
+        <h1>YOU LOSE</h1>
+        <p>You were unable to survive the jungle....</p>
+        <button class='btn' id='yes' onclick=replay()>I will not give up</button>
+        <button class='btn' id='no' onclick=quit()>.....</button>
+    </div>
+
+    <div class="Greet hidden">
+        <h1>Made with love, Ishan Morwal</h1>
+    </div>
 </body>
 </html>
